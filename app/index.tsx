@@ -1,4 +1,6 @@
+import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
+import { Link } from "expo-router";
 
 export default function Index() {
   return (
@@ -6,10 +8,12 @@ export default function Index() {
       style={{
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "center", 
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>The Basis Of Trust React Native</Text>
+      <StatusBar style="auto" />
+      <Link href="/login" style={{ color: "blue"}}>Login</Link>
     </View>
   );
 }
