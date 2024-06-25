@@ -49,8 +49,6 @@ const AppContent = () => {
 }
 
 export default function Index() {
-  const [loggedUser, setLoggedUser] = useState(null)
-
   return (
     <NativeBaseProvider>
       

@@ -7,9 +7,11 @@ import tw from 'twrnc';
 import FormField from '@/components/FormField';
 import CustomButton from '@/components/CustomButton';
 import { Link, router } from 'expo-router';
+import { useGlobalState } from '../../context/globalContext';
 
 
 const Login = () => {
+    const { loggedUser, setLoggedUser } = useGlobalState();
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -36,7 +38,8 @@ const Login = () => {
                 const userData = await userDataResponse.json();
                 setLoginError(`Welcome ${form.username}`)
                 console.log('User successfully logged in.');
-                console.log(userData);
+                setLoggedUser(userData);
+                console.log(loggedUser);
                 setTimeout(() => {
                     setLoginError('')
                     router.push('../(tabs)/dashboard');
