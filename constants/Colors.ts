@@ -9,9 +9,10 @@ const tintColorDark = '#fff';
 export const Colors = {
   tbot:{
     bg: '#173f5f',
-    seconday: '#067f99',
+    secondary: '#067f99',
     negative: '#Fbb090',
-    positive: '#C6F3AE'
+    positive: '#C6F3AE',
+    white: '#000000'
   },
   light: {
     text: '#11181C',
