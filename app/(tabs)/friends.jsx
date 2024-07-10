@@ -1,11 +1,18 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import React, { useState, useEffect} from 'react';
 import tw from 'twrnc';
+import { useGlobalState } from '../../context/globalContext';
+import Header from '../../components/Header';
+import { Colors } from "../../constants/Colors";
 
 const Friends = () => {
+    const { loggedUser, setLoggedUser } = useGlobalState();
     return (
-        <View style={tw`flex-1 justify-center`}>
-            <Text style={tw`text-2xl font-bold text-center`}>Friends</Text>
+        <View style={[tw`flex-1`, { backgroundColor: Colors.tbot.bg}]}>
+            <Header username={loggedUser.username}/>
+            <ScrollView contentContainerStyle={tw`flex-grow justify-center`}>
+                <Text style={tw`text-2xl font-bold text-center`}>Friends</Text>
+            </ScrollView>
         </View>
     )
 }
