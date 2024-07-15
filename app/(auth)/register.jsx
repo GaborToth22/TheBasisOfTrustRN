@@ -88,7 +88,8 @@ const Register = () => {
                     <CustomButton
                         title='Register'
                         handlePress={submit}
-                        containerStyles={tw`mt-7`}                        
+                        containerStyles={tw`mt-7`}
+                        color='orange'                       
                     />
                     <View style={tw`justify-center pt-5 flex-row gap-2`}>
                         <Text style={[tw`text-lg`, { color: 'white'}]}>

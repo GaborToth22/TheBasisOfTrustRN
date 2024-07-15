@@ -35,7 +35,8 @@ const AppContent = () => {
             </Text>
             <CustomButton               
               title="Login"
-              handlePress={() => router.push('/login')}              
+              handlePress={() => router.push('/login')}
+              color='orange'              
             />
           </View>
         </View>
