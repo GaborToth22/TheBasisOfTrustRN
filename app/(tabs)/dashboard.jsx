@@ -105,8 +105,8 @@ const Dashboard = () => {
           <>
               {Object.entries(userBalances).map(([userId, balance]) => {
                   if (balance > 0) {
-                      const friend = friendships.find(friendship => friendship.receiverId == userId || friendship.senderId == userId);
-                      const friendName = friend.receiverId == userId ? friend.receiverName : friend.senderName;
+                      const friend = friendships.find(friendship => friendship?.receiverId == userId || friendship?.senderId == userId);
+                      const friendName = friend?.receiverId == userId ? friend?.receiverName : friend?.senderName;
                       return (
                         <View key={userId} style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <Text style={tw`text-lg text-white mr-2`}>{friendName} </Text><Text style={[tw`text-lg`, getTextColor(parseFloat(owesYou))]}>{balance}</Text>
@@ -119,10 +119,6 @@ const Dashboard = () => {
           </>
         )        
       }
-    console.log(balances);
-    console.log(total);
-    console.log(youOwe);
-    console.log(owesYou);
 
     return (
         <View style={[tw`flex-1`, { backgroundColor: Colors.tbot.bg}]}>
@@ -144,10 +140,10 @@ const Dashboard = () => {
                 </View>
                 <View style={{ padding: 5, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View>
-                        {renderYouOwe(userBalances)}
+                        {loggedUser !== "" && renderYouOwe(userBalances)}
                     </View>
                     <View>
-                        {renderOwesYou(userBalances)}
+                        {loggedUser !== "" && renderOwesYou(userBalances)}
                     </View>
                 </View>
             </ScrollView>
