@@ -12,6 +12,7 @@ export const Colors = {
     secondary: '#067f99',
     negative: '#Fbb090',
     positive: '#C6F3AE',
+    green: '#91c476',
     white: '#000000'
   },
   light: {
