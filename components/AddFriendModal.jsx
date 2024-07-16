@@ -87,12 +87,13 @@ function AddFriendModal(props) {
                             <TextInput
                                 style={styles.input}
                                 placeholder="Username or Email"
+                                placeholderTextColor="silver"
                                 value={search}
                                 onChangeText={handleSearch}
                             />
                         </View>
                     ) : (
-                        <Text>{message}</Text>
+                        <Text style={tw`text-white`}>{message}</Text>
                     )}
                     {message === "" && searchResults.length > 0 && (
                         <ScrollView>
