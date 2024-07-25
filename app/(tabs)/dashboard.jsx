@@ -1,9 +1,12 @@
-import { View, Text, SafeAreaView, ScrollView, } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import React, { useState, useEffect} from 'react';
 import tw from 'twrnc';
 import { useGlobalState } from '../../context/globalContext';
 import Header from '../../components/Header';
 import { Colors } from "../../constants/Colors";
+import AddExpenseModal from '../../components/AddExpenseModal';
+import SettleUpModal from '../../components/SettleUpModal';
+import tbot from '../../constants/TBOT.png'
 
 const Dashboard = () => {
     const { loggedUser, setLoggedUser } = useGlobalState();
@@ -12,12 +15,15 @@ const Dashboard = () => {
     const [total, setTotal] = useState(0);
     const [owesYou, setOwesYou] = useState(0);
     const [userBalances, setUserBalances] = useState({});
+    const [addExpenseModalShow, setAddExpenseModalShow] = useState(false);
+    const [settleUpModalShow, setSettleUpModalShow] = useState(false);
 
     useEffect(() => {
         fetchBalances();
-    }, [loggedUser]);
+    }, [loggedUser, addExpenseModalShow, settleUpModalShow]);
 
     console.log(loggedUser)
+    console.log(addExpenseModalShow)
 
     const fetchBalances = async () => {
         try {
@@ -27,6 +33,19 @@ const Dashboard = () => {
             }
             const data = await response.json();
             setBalances(data);
+        } catch (error) {
+            console.error('Error fetching balance data:', error);
+        }
+    };
+
+    const fetchUser = async () => {
+        try {
+            const response = await fetch(`http://192.168.1.8:5263/users/username/${loggedUser.username}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            setLoggedUser(data);
         } catch (error) {
             console.error('Error fetching balance data:', error);
         }
@@ -123,6 +142,27 @@ const Dashboard = () => {
     return (
         <View style={[tw`flex-1`, { backgroundColor: Colors.tbot.bg}]}>
             <Header username={loggedUser.username}/>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <TouchableOpacity
+                style={[tw`rounded-xl min-h-[62px] min-w-[40%] justify-center items-center m-2`, { backgroundColor: 'orange' }]}        
+                onPress={() => setAddExpenseModalShow(true)}
+                activeOpacity={0.7}
+            >
+                <Text style={[tw`font-bold text-base`]}>Add Expense</Text>
+            </TouchableOpacity>
+            <Image
+            source={tbot}
+            style={[tw`w-[40px] h-[40px]`]}                        
+            resizeMode='contain'
+            />
+            <TouchableOpacity
+                style={[tw`rounded-xl min-h-[62px] min-w-[40%] justify-center items-center m-2`, { backgroundColor: Colors.tbot.green }]}        
+                onPress={() => setSettleUpModalShow(true)}
+                activeOpacity={0.7}
+            >               
+                <Text style={[tw`font-bold text-base`]}>Settle Up</Text>
+            </TouchableOpacity>
+            </View>
             <ScrollView contentContainerStyle={[tw`flex-grow`, { backgroundColor: Colors.tbot.secondary}]}>
                 <View style={ tw`p-3 `}>
                     <Text style={tw`text-2xl text-center text-white`}>Total Balance</Text>
@@ -146,6 +186,8 @@ const Dashboard = () => {
                         {loggedUser !== "" && renderOwesYou(userBalances)}
                     </View>
                 </View>
+                <AddExpenseModal show={addExpenseModalShow} fetchUser={fetchUser} onHide={() => setAddExpenseModalShow(false)}/>
+                <SettleUpModal show={settleUpModalShow} userBalances={userBalances} fetchUser={fetchUser} onHide={() => setSettleUpModalShow(false)}/>
             </ScrollView>
         </View>
     )
