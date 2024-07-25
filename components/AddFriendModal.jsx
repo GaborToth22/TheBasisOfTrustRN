@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     modalView: {
         margin: 20,
         backgroundColor: Colors.tbot.secondary,
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor: 'black',
         borderWidth: 1,
         padding: 35,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         height: 40,
         borderColor: 'gray',
         borderWidth: 1,
-        borderRadius: 12,
+        borderRadius: 8,
         marginBottom: 15,
         paddingHorizontal: 10,
         backgroundColor: 'black',

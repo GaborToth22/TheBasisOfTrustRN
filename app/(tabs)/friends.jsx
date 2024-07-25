@@ -5,6 +5,7 @@ import { useGlobalState } from '../../context/globalContext';
 import Header from '../../components/Header';
 import { Colors } from "../../constants/Colors";
 import AddFriendModal from '../../components/AddFriendModal';
+import tbot from '../../constants/TBOT.png'
 
 const Friends = () => {
     const { loggedUser, setLoggedUser } = useGlobalState();
@@ -60,7 +61,7 @@ const Friends = () => {
     const renderFriends = () => {
         const friendshipsSent = loggedUser.friendshipsSent || [];
         const friendshipsReceived = loggedUser.friendshipsReceived || [];
-        const friendships = friendshipsSent.concat(friendshipsReceived);
+        const friendships = friendshipsSent.concat(friendshipsReceived) ;
         if(requestButton == false){
         return (
             <>
@@ -127,14 +128,19 @@ const Friends = () => {
             <Header username={loggedUser.username}/>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <TouchableOpacity
-                style={[tw`rounded-xl min-h-[62px] min-w-[45%] justify-center items-center m-2`, { backgroundColor: requestButton ? Colors.tbot.positive : Colors.tbot.green }]}        
+                style={[tw`rounded-xl min-h-[62px] min-w-[40%] justify-center items-center m-2`, { backgroundColor: requestButton ? Colors.tbot.positive : Colors.tbot.green }]}        
                 onPress={handleRequestButtonChange}
                 activeOpacity={0.7}
             >
                 <Text style={[tw`font-bold text-base`]}>{buttonLabel}</Text>
             </TouchableOpacity>
+            <Image
+            source={tbot}
+            style={[tw`w-[40px] h-[40px]`]}                        
+            resizeMode='contain'
+            />
             <TouchableOpacity
-                style={[tw`rounded-xl min-h-[62px] min-w-[45%] justify-center items-center m-2`, { backgroundColor: 'orange' }]}        
+                style={[tw`rounded-xl min-h-[62px] min-w-[40%] justify-center items-center m-2`, { backgroundColor: 'orange' }]}        
                 onPress={handleAddFriendModalChange}
                 activeOpacity={0.7}
             >               
@@ -142,10 +148,10 @@ const Friends = () => {
             </TouchableOpacity>
             </View>
                 <Text style={tw`text-2xl font-bold p-2 text-center text-white`}>{title}</Text>
-            <ScrollView contentContainerStyle={[tw`flex-grow`, { backgroundColor: Colors.tbot.secondary}]}>
+            <ScrollView style={tw`flex-1`} contentContainerStyle={[tw`flex-grow`, { backgroundColor: Colors.tbot.secondary }]}>
                 {renderFriends()}
+                <AddFriendModal show={addFriendModalShow} fetchUser={fetchUser} onHide={() => setAddFriendModalShow(false)}/>
             </ScrollView>
-            <AddFriendModal show={addFriendModalShow} fetchUser={fetchUser} onHide={() => setAddFriendModalShow(false)}/>
         </View>
     )
 }
