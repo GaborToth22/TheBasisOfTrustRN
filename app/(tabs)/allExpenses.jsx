@@ -7,6 +7,7 @@ import { useGlobalState } from '../../context/globalContext';
 import tw from 'twrnc';
 import tbot from '../../constants/TBOT.png';
 import { Colors } from '../../constants/Colors';
+import { useFocusEffect } from '@react-navigation/native';
 
 function AllExpensesPage() {
   const { loggedUser, setLoggedUser } = useGlobalState();
@@ -17,14 +18,20 @@ function AllExpensesPage() {
   const [youOwe, setYouOwe] = useState(0);
   const [total, setTotal] = useState(0);
   const [owesYou, setOwesYou] = useState(0);
-  const [userBalances, setUserBalances] = useState({});
+  const [userBalances, setUserBalances] = useState({});  
 
   useEffect(() => {
     fetchExpenses();
     fetchBalances();
   }, [loggedUser, addExpenseModalShow, settleUpModalShow]);
 
-  
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchExpenses();
+      fetchBalances();
+    }, [])
+  );
+
 
   const fetchExpenses = async () => {
     try {
