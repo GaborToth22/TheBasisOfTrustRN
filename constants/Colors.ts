@@ -13,7 +13,7 @@ export const Colors = {
     negative: '#Fbb090',
     positive: '#C6F3AE',
     green: '#91c476',
-    white: '#000000'
+    white: '#ffffff'
   },
   light: {
     text: '#11181C',

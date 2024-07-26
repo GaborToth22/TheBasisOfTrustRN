@@ -23,6 +23,25 @@ const Friends = () => {
     const buttonLabel = requestButton ? ' Show Friends' : 'Show Friend Requests';
     const title = requestButton ? 'Friend Requests' : 'Friends';    
 
+    const acceptFriend = async (senderId, receiverId) => {        
+        try {
+            const response = await fetch(`http://192.168.1.8:5263/friendship/acceptRequest/${senderId}/${receiverId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }    
+            const data = await response.json();                  
+            fetchUser()
+        } catch (error) {
+            console.error('Error fetching delete data:', error);
+        }
+    };
+
     const deleteFriend = async (senderId, receiverId) => {
         console.log(senderId)
         console.log(receiverId)
@@ -91,7 +110,10 @@ const Friends = () => {
                                 <Text style={[tw`font-bold text-base text-white ml-3 mt-1`]}>{friendship.senderName}</Text>
                             </View>
                             <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                                <TouchableOpacity style={[tw`rounded-lg min-h-[31px] min-w-[20%] justify-center items-center mr-2 mt-1`, { backgroundColor: Colors.tbot.positive }]}>
+                                <TouchableOpacity 
+                                    style={[tw`rounded-lg min-h-[31px] min-w-[20%] justify-center items-center mr-2 mt-1`, { backgroundColor: Colors.tbot.positive }]}
+                                    onPress={() => acceptFriend(loggedUser.id, friendship.senderId)}
+                                >
                                     <Text>Accept</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity 
