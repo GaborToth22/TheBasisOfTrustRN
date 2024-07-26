@@ -8,8 +8,8 @@ import tw from 'twrnc';
 
 function SettleUpModal({ show, onHide, userBalances }) {
   const { loggedUser, setLoggedUser } = useGlobalState();
-  const [selectedFriend, setSelectedFriend] = useState(null);    
-  const [amount, setAmount] = useState(null);
+  const [selectedFriend, setSelectedFriend] = useState("");    
+  const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const [paidBy, setPaidBy] = useState(loggedUser.id);
   const [message, setMessage] = useState("");
@@ -73,8 +73,8 @@ function SettleUpModal({ show, onHide, userBalances }) {
 
   const resetForm = () => {
     setDate(new Date().toISOString().substr(0, 10));
-    setSelectedFriend(null);
-    setAmount(null);
+    setSelectedFriend("");
+    setAmount("");
     setPaidBy(loggedUser.id);    
     setMessage("");
   };
@@ -132,7 +132,7 @@ function SettleUpModal({ show, onHide, userBalances }) {
           <Text style={styles.label}>Paid</Text>
           <View style={styles.col}>
             <Picker selectedValue={selectedFriend} onValueChange={handleFilterChange} style={styles.picker}>
-              <Picker.Item label="Select a friend" value={null} />
+              <Picker.Item label="Select a friend" value={""} />
               {paidBy == loggedUser.id ? createOptionsToPay() : <Picker.Item label="You" value={loggedUser.id} />}
             </Picker>
           </View>
