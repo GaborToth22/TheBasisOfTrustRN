@@ -7,6 +7,7 @@ import { Colors } from "../../constants/Colors";
 import AddExpenseModal from '../../components/AddExpenseModal';
 import SettleUpModal from '../../components/SettleUpModal';
 import tbot from '../../constants/TBOT.png'
+import { useFocusEffect } from '@react-navigation/native';
 
 const Dashboard = () => {
     const { loggedUser, setLoggedUser } = useGlobalState();
@@ -21,6 +22,12 @@ const Dashboard = () => {
     useEffect(() => {
         fetchBalances();
     }, [loggedUser, addExpenseModalShow, settleUpModalShow]);
+
+    useFocusEffect(
+        React.useCallback(() => {
+          fetchBalances();
+        }, [])
+      );
 
     console.log(loggedUser)
     console.log(addExpenseModalShow)
