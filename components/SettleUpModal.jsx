@@ -95,7 +95,7 @@ function SettleUpModal({ show, onHide, userBalances }) {
         return <Picker.Item key={id} label={friendName} value={id} />;
       }
       return null;
-    });
+    }).filter(item => item !== null);
   };
 
   const createOptionsToGet = () => {
@@ -111,7 +111,7 @@ function SettleUpModal({ show, onHide, userBalances }) {
         return <Picker.Item key={id} label={friendName} value={id} />;
       }
       return null;
-    });
+    }).filter(item => item !== null);
   };
 
   return (
