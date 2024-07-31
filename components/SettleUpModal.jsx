@@ -226,7 +226,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   message: {
-    color: 'red',
+    color: 'white',
+    fontSize: 16,
     marginBottom: 10,
   },
   footer: {

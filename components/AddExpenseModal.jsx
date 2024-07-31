@@ -369,7 +369,8 @@ const styles = StyleSheet.create({
     
   },
   message: {
-    color: 'red',
+    color: 'white',
+    fontSize: 16,
     marginBottom: 10
   }  
 });
