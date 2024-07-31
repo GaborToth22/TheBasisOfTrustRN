@@ -14,7 +14,7 @@ function AddExpenseModal(props) {
   const [filter, setFilter] = useState("");
   const [filteredFriends, setFilteredFriends] = useState([]);
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const [paidBy, setPaidBy] = useState(loggedUser.id);
   const [split, setSplit] = useState(1);
@@ -90,7 +90,7 @@ function AddExpenseModal(props) {
     setFilter("");
     setDate(new Date().toISOString().substr(0, 10));
     setParticipants([]);
-    setAmount(null);
+    setAmount("");
     setSplit(1);
     setPaidBy(loggedUser.id);
     setDescription("");
