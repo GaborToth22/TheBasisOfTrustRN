@@ -7,7 +7,6 @@ import removeIcon from '../constants/decline.png';
 import tw from 'twrnc';
 import tbot from '../constants/TBOT.png'
 
-
 function AddExpenseModal(props) {
   const { loggedUser, setLoggedUser } = useGlobalState();
   const [participants, setParticipants] = useState([]);
@@ -72,7 +71,6 @@ function AddExpenseModal(props) {
           split: split                 
         }),
       });
-
       if (response.ok) {
         setMessage('Expense successfully created.');
         setTimeout(() => {

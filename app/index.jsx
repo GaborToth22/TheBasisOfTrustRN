@@ -9,9 +9,6 @@ import trust from '../constants/trust2.jpeg';
 import CustomButton from "@/components/CustomButton";
 import tw from 'twrnc';
 
-
-
-
 const AppContent = () => {  
   return (
     <SafeAreaView style={[tw`flex-1`, { backgroundColor: Colors.tbot.bg }]}>
@@ -21,8 +18,7 @@ const AppContent = () => {
             source={tbotlogo}
             style={tw`w-[130px] h-[100px]`}
             resizeMode='contain'
-          />
-          
+          />          
           <Image
             source={trust}
             style={tw`max-w-[380px] w-full h-[300px]`}
@@ -51,10 +47,8 @@ const AppContent = () => {
 
 export default function Index() {
   return (
-    <NativeBaseProvider>
-      
-        <AppContent />
-      
+    <NativeBaseProvider>      
+        <AppContent />      
     </NativeBaseProvider>
   );
 }

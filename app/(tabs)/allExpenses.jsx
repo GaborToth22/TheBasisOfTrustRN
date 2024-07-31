@@ -24,8 +24,8 @@ function AllExpensesPage() {
     if (loggedUser) {
       fetchExpenses();
       fetchBalances();
-  }
-}, [loggedUser, addExpenseModalShow, settleUpModalShow]);
+    }
+  }, [loggedUser, addExpenseModalShow, settleUpModalShow]);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -35,7 +35,6 @@ function AllExpensesPage() {
       }
     }, [])
   );
-
 
   const fetchExpenses = async () => {
     try {
@@ -74,41 +73,41 @@ function AllExpensesPage() {
     } catch (error) {
         console.error('Error fetching balance data:', error);
     }
-    };
+  };
 
-    useEffect(() => {
-        if (balances.length !== 0 && loggedUser) {
-            const userBalances = {};
-            let youOweSum = 0.00;
-            let owesYouSum = 0.00;
+  useEffect(() => {
+      if (balances.length !== 0 && loggedUser) {
+          const userBalances = {};
+          let youOweSum = 0.00;
+          let owesYouSum = 0.00;
 
-            balances.forEach(balance => {
-                const amount = balance.amount;                
-                console.log(balance.userId)
-                if (balance.userId === loggedUser.id) {
-                    userBalances[balance.participantUserId] = (userBalances[balance.participantUserId] || 0) + amount;
-                } else {
-                    userBalances[balance.userId] = (userBalances[balance.userId] || 0) - amount;
-                }})
+          balances.forEach(balance => {
+              const amount = balance.amount;                
+              console.log(balance.userId)
+              if (balance.userId === loggedUser.id) {
+                  userBalances[balance.participantUserId] = (userBalances[balance.participantUserId] || 0) + amount;
+              } else {
+                  userBalances[balance.userId] = (userBalances[balance.userId] || 0) - amount;
+              }})
 
-            Object.values(userBalances).forEach(balance => {
-                if (balance < 0) {
-                    youOweSum += balance;
-                } else {
-                    owesYouSum += balance;
-                }
-            });
-            const formattedBalances = {};
-        Object.keys(userBalances).forEach(key => {
-            formattedBalances[key] = userBalances[key].toFixed(2);
-        });
+          Object.values(userBalances).forEach(balance => {
+              if (balance < 0) {
+                  youOweSum += balance;
+              } else {
+                  owesYouSum += balance;
+              }
+          });
+          const formattedBalances = {};
+      Object.keys(userBalances).forEach(key => {
+          formattedBalances[key] = userBalances[key].toFixed(2);
+      });
 
-        setYouOwe(youOweSum.toFixed(2));
-        setOwesYou(owesYouSum.toFixed(2));
-        setTotal((owesYouSum + youOweSum).toFixed(2));
-        setUserBalances(formattedBalances);
-        }
-    }, [balances, loggedUser]);
+      setYouOwe(youOweSum.toFixed(2));
+      setOwesYou(owesYouSum.toFixed(2));
+      setTotal((owesYouSum + youOweSum).toFixed(2));
+      setUserBalances(formattedBalances);
+      }
+  }, [balances, loggedUser]);
 
   const renderExpenses = () => {
     const sortedExpenses = expenses.sort((a, b) => {

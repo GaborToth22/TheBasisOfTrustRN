@@ -1,6 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import React, { useState, useEffect } from 'react';
-import tw from 'twrnc';
 import { useGlobalState } from '../../context/globalContext';
 import Header from '../../components/Header';
 import { Colors } from "../../constants/Colors";
@@ -32,9 +31,6 @@ const Dashboard = () => {
             }
         }, [])
     );
-
-    console.log(loggedUser);
-    console.log(addExpenseModalShow);
 
     const fetchBalances = async () => {
         try {
