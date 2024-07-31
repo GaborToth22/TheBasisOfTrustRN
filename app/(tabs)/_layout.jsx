@@ -5,7 +5,6 @@ import dashboardIcon from '../../constants/dashboard.png';
 import friendsIcon from '../../constants/friends.png';
 import allExpensesIcon from '../../constants/expenseHistory.png';
 
-
 const TabIcon = ({ icon, color, name, focused}) => {
     return (
         <View>
