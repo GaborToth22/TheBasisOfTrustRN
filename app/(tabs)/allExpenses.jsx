@@ -21,14 +21,18 @@ function AllExpensesPage() {
   const [userBalances, setUserBalances] = useState({});  
 
   useEffect(() => {
-    fetchExpenses();
-    fetchBalances();
-  }, [loggedUser, addExpenseModalShow, settleUpModalShow]);
+    if (loggedUser) {
+      fetchExpenses();
+      fetchBalances();
+  }
+}, [loggedUser, addExpenseModalShow, settleUpModalShow]);
 
   useFocusEffect(
     React.useCallback(() => {
-      fetchExpenses();
-      fetchBalances();
+      if (loggedUser) {
+        fetchExpenses();
+        fetchBalances();
+      }
     }, [])
   );
 

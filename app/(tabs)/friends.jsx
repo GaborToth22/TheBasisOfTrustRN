@@ -78,8 +78,8 @@ const Friends = () => {
     };
 
     const renderFriends = () => {
-        const friendshipsSent = loggedUser.friendshipsSent || [];
-        const friendshipsReceived = loggedUser.friendshipsReceived || [];
+        const friendshipsSent = loggedUser?.friendshipsSent || [];
+        const friendshipsReceived = loggedUser?.friendshipsReceived || [];
         const friendships = friendshipsSent.concat(friendshipsReceived) ;
         if(requestButton == false){
         return (
