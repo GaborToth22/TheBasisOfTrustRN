@@ -6,6 +6,7 @@ import tbotLogo from '../../constants/TBOT.png';
 import FormField from '@/components/FormField';
 import CustomButton from '@/components/CustomButton';
 import { Link, router } from 'expo-router';
+import { API_BASE_URL } from '@env';
 
 const Register = () => {
     const [form, setForm] = useState({
@@ -19,7 +20,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://192.168.1.8:5263/auth/register`, {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import { Colors } from '../constants/Colors';
 import { Picker } from '@react-native-picker/picker';
 import tbot from '../constants/TBOT.png'
 import tw from 'twrnc';
+import { API_BASE_URL } from '@env';
 
 function SettleUpModal({ show, onHide, userBalances }) {
   const { loggedUser, setLoggedUser } = useGlobalState();
@@ -43,7 +44,7 @@ function SettleUpModal({ show, onHide, userBalances }) {
       const description = "Settle Up";
       const split = paidBy == loggedUser.id ? 2 : 3;
 
-      const response = await fetch('http://192.168.1.8:5263/expense', {
+      const response = await fetch(`${API_BASE_URL}/expense`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

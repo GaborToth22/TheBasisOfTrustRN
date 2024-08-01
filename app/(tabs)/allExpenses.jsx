@@ -8,6 +8,7 @@ import tw from 'twrnc';
 import tbot from '../../constants/TBOT.png';
 import { Colors } from '../../constants/Colors';
 import { useFocusEffect } from '@react-navigation/native';
+import { API_BASE_URL } from '@env';
 
 function AllExpensesPage() {
   const { loggedUser, setLoggedUser } = useGlobalState();
@@ -38,7 +39,7 @@ function AllExpensesPage() {
 
   const fetchExpenses = async () => {
     try {
-      const response = await fetch(`http://192.168.1.8:5263/expense/userId/${loggedUser.id}`);
+      const response = await fetch(`${API_BASE_URL}/expense/userId/${loggedUser.id}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -51,7 +52,7 @@ function AllExpensesPage() {
 
   const fetchBalances = async () => {
     try {
-      const response = await fetch(`http://192.168.1.8:5263/balance/${loggedUser.id}`);
+      const response = await fetch(`${API_BASE_URL}/balance/${loggedUser.id}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -64,7 +65,7 @@ function AllExpensesPage() {
 
   const fetchUser = async () => {
     try {
-        const response = await fetch(`http://192.168.1.8:5263/users/username/${loggedUser.username}`);
+        const response = await fetch(`${API_BASE_URL}/users/username/${loggedUser.username}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

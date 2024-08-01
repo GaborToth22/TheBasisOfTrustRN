@@ -3,6 +3,8 @@ import { View, Text, TextInput, Pressable, Modal, StyleSheet, TouchableOpacity, 
 import { useGlobalState } from '../context/globalContext';
 import { Colors } from '../constants/Colors';
 import tw from 'twrnc';
+import { API_BASE_URL } from '@env';
+
 
 function AddFriendModal(props) {
     const [users, setUsers] = useState([]);
@@ -18,7 +20,7 @@ function AddFriendModal(props) {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch(`http://192.168.1.8:5263/users`);
+            const response = await fetch(`${API_BASE_URL}/users`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -44,7 +46,7 @@ function AddFriendModal(props) {
 
     const sendRequest = async (senderId, receiverId) => {
         try {
-            const response = await fetch(`http://192.168.1.8:5263/friendship/sendRequest/${senderId}/${receiverId}`, {
+            const response = await fetch(`${API_BASE_URL}/friendship/sendRequest/${senderId}/${receiverId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

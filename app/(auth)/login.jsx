@@ -7,6 +7,7 @@ import FormField from '@/components/FormField';
 import CustomButton from '@/components/CustomButton';
 import { Link, router } from 'expo-router';
 import { useGlobalState } from '../../context/globalContext';
+import { API_BASE_URL } from '@env';
 
 const Login = () => {
     const { loggedUser, setLoggedUser } = useGlobalState();
@@ -19,7 +20,7 @@ const Login = () => {
     const submit = async (e) => {
         e.preventDefault();        
         try {
-            const loginResponse = await fetch('http://192.168.1.8:5263/auth/login', {
+            const loginResponse = await fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +31,7 @@ const Login = () => {
                 }),
             });
             if (loginResponse.ok ) {                
-                const userDataResponse = await fetch(`http://192.168.1.8:5263/users/username/${form.username}`);
+                const userDataResponse = await fetch(`${API_BASE_URL}/users/username/${form.username}`);
                 const userData = await userDataResponse.json();
                 setLoginError(`Welcome ${form.username}`);
                 console.log('User successfully logged in.');

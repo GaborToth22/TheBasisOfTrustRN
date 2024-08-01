@@ -7,6 +7,7 @@ import AddExpenseModal from '../../components/AddExpenseModal';
 import SettleUpModal from '../../components/SettleUpModal';
 import tbot from '../../constants/TBOT.png';
 import { useFocusEffect } from '@react-navigation/native';
+import { API_BASE_URL } from '@env';
 
 const Dashboard = () => {
     const { loggedUser, setLoggedUser } = useGlobalState();
@@ -34,7 +35,7 @@ const Dashboard = () => {
 
     const fetchBalances = async () => {
         try {
-            const response = await fetch(`http://192.168.1.8:5263/balance/${loggedUser.id}`);
+            const response = await fetch(`${API_BASE_URL}/balance/${loggedUser.id}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -47,7 +48,7 @@ const Dashboard = () => {
 
     const fetchUser = async () => {
         try {
-            const response = await fetch(`http://192.168.1.8:5263/users/username/${loggedUser.username}`);
+            const response = await fetch(`${API_BASE_URL}/users/username/${loggedUser.username}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

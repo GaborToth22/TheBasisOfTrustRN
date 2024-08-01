@@ -5,7 +5,8 @@ import { Picker } from '@react-native-picker/picker';
 import { Colors } from '../constants/Colors';
 import removeIcon from '../constants/decline.png';
 import tw from 'twrnc';
-import tbot from '../constants/TBOT.png'
+import tbot from '../constants/TBOT.png';
+import { API_BASE_URL } from '@env';
 
 function AddExpenseModal(props) {
   const { loggedUser, setLoggedUser } = useGlobalState();
@@ -57,7 +58,7 @@ function AddExpenseModal(props) {
     try {
       const participantIds = participants.map(friendship => friendship.senderName === null ? friendship.receiverId : friendship.senderId);
       participantIds.push(loggedUser.id);
-      const response = await fetch('http://192.168.1.8:5263/expense', {
+      const response = await fetch(`${API_BASE_URL}/expense`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +112,7 @@ function AddExpenseModal(props) {
   const checkPaidByOptions = async (participants) => {
     const participantsIds = participants.map(p => p.senderName === null ? p.receiverId : p.senderId);
     try {
-      const response = await fetch('http://192.168.1.8:5263/friendship/checkPaidBy', {
+      const response = await fetch(`${API_BASE_URL}/friendship/checkPaidBy`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
