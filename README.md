@@ -23,9 +23,12 @@ BasisOfTrustRN is the part of this existing project written in React Native, so 
 
 The Login and Register Screens
 
-<img src="./constants/login.jpg" alt="Login" >
-<img src="./constants/register.jpg" alt="Register" >
-
+<table>
+  <tr>
+    <td><img src="./constants/login.jpg" alt="Login"></td>
+    <td><img src="./constants/register.jpg" alt="Register"></td>
+  </tr>
+</table>
 
 The dashboard shows who belongs to the user and to whom the user belongs to. 
 
@@ -33,9 +36,13 @@ Create expense with the Add Expense button
 
 Register a refund with the Settle Up button
 
-<img src="./constants/dashboard.jpg" alt="Dashboard" >
-<img src="./constants/addExpense.jpg" alt="AddExpense" >
-<img src="./constants/settleUp.jpg" alt="SettleUp" >
+<table>
+  <tr>
+    <td><img src="./constants/dashboard.jpg" alt="Dashboard"></td>
+    <td><img src="./constants/addExpense.jpg" alt="AddExpense"></td>
+    <td><img src="./constants/settleUp.jpg" alt="SettleUp"></td>
+  </tr>
+</table>
 
 The user can check the entered expenses on the All Expenses page
 
@@ -43,6 +50,10 @@ The user can check the entered expenses on the All Expenses page
 
 On the Friends screen, the user can add new friends based on email or username and manage the requestes
 
-<img src="./constants/friends.jpg" alt="Friends" >
-<img src="./constants/addFriend.jpg" alt="AddFriend" >
-<img src="./constants/requestes.jpg" alt="Requestes" >
+<table>
+  <tr>
+    <td><img src="./constants/friends.jpg" alt="Friends"></td>
+    <td><img src="./constants/addFriend.jpg" alt="AddFriend"></td>
+    <td><img src="./constants/requestes.jpg" alt="Requestes"></td>
+  </tr>
+</table>
