@@ -91,12 +91,11 @@ function SettleUpModal({ show, onHide, userBalances }) {
     return Object.entries(userBalances).map(([userId, balance]) => {
       if (balance < 0) {
         const friend = friendships.find(friendship => friendship.receiverId == userId || friendship.senderId == userId);
-        const friendName = friend.receiverId == userId ? friend.receiverName : friend.senderName;
-        const id = friend.receiverId == userId ? friend.receiverId : friend.senderId;
-        return <Picker.Item key={id} label={friendName} value={id} />;
+        const friendName = friend.receiverId == userId ? friend.receiverName : friend.senderName;        
+        return <Picker.Item key={userId} label={friendName} value={userId} />;
       }
       return null;
-    }).filter(item => item !== null);
+    }).filter(item => item != null);
   };
 
   const createOptionsToGet = () => {
@@ -107,12 +106,11 @@ function SettleUpModal({ show, onHide, userBalances }) {
     return Object.entries(userBalances).map(([userId, balance]) => {
       if (balance > 0) {
         const friend = friendships.find(friendship => friendship.receiverId == userId || friendship.senderId == userId);
-        const friendName = friend?.receiverId == userId ? friend?.receiverName : friend?.senderName;
-        const id = friend?.receiverId == userId ? friend?.receiverId : friend?.senderId;
-        return <Picker.Item key={id} label={friendName} value={id} />;
+        const friendName = friend?.receiverId == userId ? friend?.receiverName : friend?.senderName;        
+        return <Picker.Item key={userId} label={friendName} value={userId} />;
       }
       return null;
-    }).filter(item => item !== null);
+    }).filter(item => item != null);
   };
 
   return (
