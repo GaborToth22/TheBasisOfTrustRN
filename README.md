@@ -6,4 +6,43 @@
 
 The Basis Of Trust is an application that helps the user easily and transparently manage debts between friends, because trust is based on accurate accounting.
 
-BasisOfTrustRN is the part of this existing project written in React Native, so that we can enjoy the benefits of the application on both IOS and Android systems.
+BasisOfTrustRN is the part of this existing project written in React Native, so that we can enjoy the benefits of the application on both IOS and Android.
+
+## Build With
+
+![React Native](https://img.shields.io/badge/React%20Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![ASP.NET](https://img.shields.io/badge/ASP.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+![MSSQL Server](https://img.shields.io/badge/MSSQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Bootstrap](https://img.shields.io/badge/React%20Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+## Features
+
+The Login and Register Screens
+
+<img src="./constants/login.jpg" alt="Login" >
+<img src="./constants/register.jpg" alt="Register" >
+
+
+The dashboard shows who belongs to the user and to whom the user belongs to. 
+
+Create expense with the Add Expense button
+
+Register a refund with the Settle Up button
+
+<img src="./constants/dashboard.jpg" alt="Dashboard" >
+<img src="./constants/addExpense.jpg" alt="AddExpense" >
+<img src="./constants/settleUp.jpg" alt="SettleUp" >
+
+The user can check the entered expenses on the All Expenses page
+
+<img src="./constants/allExpenses.jpg" alt="AllExpenses" >
+
+On the Friends screen, the user can add new friends based on email or username and manage the requestes
+
+<img src="./constants/friends.jpg" alt="Friends" >
+<img src="./constants/addFriend.jpg" alt="AddFriend" >
+<img src="./constants/requestes.jpg" alt="Requestes" >
